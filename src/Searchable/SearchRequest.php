@@ -27,10 +27,12 @@ class SearchRequest
      * The query to use to search on the specified models.
      *
      * @param array $query
+     * @param integer $from
+     * @param integer $size
      * @return array an array of search results
      */
-    public function withQuery(array $query)
+    public function withQuery(array $query, $from = 0, $size = 15, &$total)
     {
-        return App::make('searchable.engine')->search($this->models, $query);
+        return App::make('searchable.engine')->search($this->models, $query, $from, $size, $total);
     }
-} 
+}

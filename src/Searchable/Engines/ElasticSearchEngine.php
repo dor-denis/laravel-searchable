@@ -113,10 +113,11 @@ class ElasticSearchEngine implements SearchEngineInterface
      * @param array $models
      * @param integer $from
      * @param integer $size
+     * @param $total
      * @param array $query
      * @return array
      */
-    public function search(array $models, array $query, $from = 0, $size = 15)
+    public function search(array $models, array $query, $from = 0, $size = 15, &$total)
     {
         $params = [
             'index' => $this->getIndexes($models),
@@ -126,12 +127,13 @@ class ElasticSearchEngine implements SearchEngineInterface
 
         try {
             $queryResponse = $this->client->search($params);
-
         } catch(Missing404Exception $e) {
 
             // the index doesn't exist: no results
             return [];
         }
+
+        $total = $queryResponse['hits']['total'];
 
         return $this->hydrator->hydrate($queryResponse, $models);
     }
