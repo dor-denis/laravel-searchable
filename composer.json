@@ -1,18 +1,19 @@
 {
-    "name": "wkjagt/searchable",
-    "description": "Make Laravel models instantly searchable, and automatically indexed using Elastic Search.",
+    "name": "dor-denis/searchable",
+    "description": "Make Laravel models instantly searchable, and automatically indexed using Elastic Search. Fork of wkjagt/searchable with ability to paginate",
     "keywords": ["laravel", "search", "searching", "elasticsearch", "eloquent"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Willem van der Jagt",
-            "email": "wkjagt@gmail.com"
+            "name": "Denis Dorofeiev",
+            "email": "dor-denis@yandex.ru"
         }
     ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/database" : "4.2.*",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "4.2.*",
+        "elasticsearch/elasticsearch": "~1.0"
     },
     "require-dev": {
         "phpspec/phpspec": "~2.0"
