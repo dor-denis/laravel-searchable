@@ -111,15 +111,17 @@ class ElasticSearchEngine implements SearchEngineInterface
      * to search are specified by the model.
      *
      * @param array $models
+     * @param integer $from
+     * @param integer $size
      * @param array $query
      * @return array
      */
-    public function search(array $models, array $query)
+    public function search(array $models, array $query, $from = 0, $size = 15)
     {
         $params = [
             'index' => $this->getIndexes($models),
             'type'  => $this->getTypes($models),
-            'body' => ['query' => $query]
+            'body' => ['query' => $query, 'from' => $from, 'size' => $size]
         ];
 
         try {
