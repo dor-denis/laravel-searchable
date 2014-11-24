@@ -18,5 +18,5 @@ interface SearchEngineInterface
 
     public function delete(Model $model);
 
-    public function search(array $models, array $query, $from = 0, $size = 15);
+    public function search(array $models, array $query, $from = 0, $size = 15, &$total);
 } 
